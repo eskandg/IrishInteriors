@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="../public/images/icon.png"> 
+    <title><%= title %></title> 
+    <%- include('partials/head'); %> 
+  </head>
+  <body>
+
+    <!-- navbar -->
+    <%- include('partials/navbar'); %>
+
+    <!-- login and registration -->
+    <%- include('partials/login'); %>
+    <%- include('partials/registration'); %>
+
+    <!--Partial loads Jumbotron and Categories-->
+    <%- include('partials/index'); %> 
+
+    <!-- All Products -->
+    <%- include('partials/products'); %>
+
+    <!-- Category Products --> 
+    <%- include('partials/bedroomproducts'); %>
+    <%- include('partials/diningproducts'); %>
+    <%- include('partials/kitchenproducts'); %>
+    <%- include('partials/bathroomproducts'); %>
+    <%- include('partials/livingproducts'); %>
+    <%- include('partials/workspaceproducts'); %>
+
+    <!-- Basket -->
+    <%- include('partials/basket'); %>
+
+    <!-- Order complete -->
+    <%- include('partials/order-complete'); %>
+    
+    <!-- Bootstrap JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="../javascripts/auth.js"></script> 
+    <script src="../javascripts/basket.js"></script>
+    <script src="../javascripts/order.js"></script> 
+   
+    <script>
+
+      // function used to show wanted content and hide everything else as app is single paged
+      function changeContent(element) {
+        const requiresLogin = new Set(["basket"]);
+        let contentIdArray = document.getElementsByClassName("contentID");
+        let elementContentName = element.id.slice(10);
+
+        $(".content").hide();
+
+        if (requiresLogin.has(elementContentName) && localStorage.token == null) { 
+          changeContent(document.getElementById("contentID-index"))
+          alert("Please log in to continue");
+        }
+        else {
+          let content = null;
+          for (let i = 0; i < contentIdArray.length; i++) {
+              contentName = contentIdArray[i].id.slice(10);
+              content = document.getElementById(contentName);
+
+              if (content == null)
+                console.log("Missing id for " + contentName);
+              else if (elementContentName != contentName)
+                content.style.display = "none";
+              else
+                content.style.display = "block";            
+          }
+
+
+        }
+      }
+
+      // landing content
+      let index = document.getElementById("contentID-index");
+      changeContent(index);
+
+    </script> 
+  </body> 
+</html>

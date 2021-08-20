@@ -1,0 +1,52 @@
+<div id="signup" class="content initial-display"> 
+    <div style="height: 100%;" class="container card d-flex flex-column justify-content-center my-5 p-5 align-items-center">
+        <h1 style="font-size: 5vh;" class="lead text-center mb-5">Create a new account</h1>
+
+        <div class="form-group">
+            <form id="register-form" action="." method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="wDzU3YNGQKGrYcyviv1kDUflr3goMGSbBMrMa5R32Qo8RIXiY6tu8Kg0MzZ5RL0V">
+                
+                <div id="signup-alert" class="alert alert-block alert-danger" style="display: none;"> 
+                    <ul class="m-0"> 
+                        <li id="signup-error"></li>
+                    </ul> 
+                </div> 
+
+                <div id="div_id_username1" class="form-group"> 
+                    <label for="id_username1" class=" requiredField">Username<span class="asteriskField">*</span></label> 
+                    <div class=""> 
+                        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus class="textinput textInput form-control" required id="id_username1">
+                        <small id="hint_id_username1" class="form-text text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+                    </div> 
+                </div> 
+
+                <div id="div_id_password1" class="form-group"> 
+                    <label for="id_password1" class=" requiredField">Password<span class="asteriskField">*</span></label>
+                    <div class="">
+                        <input type="password" name="password1" autocomplete="new-password" class="textinput textInput form-control" required id="id_password1"> 
+                        <small id="hint_id_password1" class="form-text text-muted">
+                            <ul>
+                                <li>Your password can’t be too similar to your other personal information.</li>
+                                <li>Your password must contain at least 8 characters.</li>
+                                <li>Your password can’t be a commonly used password.</li>
+                                <li>Your password can’t be entirely numeric.</li>
+                            </ul>
+                        </small> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_password2" class="form-group"> 
+                        <label for="id_password2" class=" requiredField">Password confirmation<span class="asteriskField">*</span></label> 
+                        <div class="">
+                            <input type="password" name="password2" autocomplete="new-password" class="textinput textInput form-control" required id="id_password2">
+                            <small id="hint_id_password2" class="form-text text-muted">Enter the same password as before, for verification.</small> 
+                        </div> 
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            </form>
+            <a id="contentID-login" class="contentID" href="#login" onclick="changeContent(this)">
+                <button class="d-flex mx-auto mt-3 py-2 justify-content-center btn btn-light">Already have an account?</button>
+            <a/>
+        </div>
+    </div>
+</div>

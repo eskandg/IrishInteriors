@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Hind:400,700");
+
+body {
+    background: #f1f3f5!important;
+}
+
+/* prevents contents from flashing on refresh */
+.initial-display {
+    display: none;
+}
+
+.signed {
+    display: contents;
+}
+
+.letter-spacing {
+    letter-spacing: 2.5px;
+}
+
+.jumbotron {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    background-image: url('http://localhost:8000/static/img/background.jpeg');
+    background-repeat: repeat;
+    height: 100%;
+    text-align: center;
+} 
+
+@media screen and (max-width: 500px) {
+    h1.display-4 {
+        font-size: 5vh!important;
+    }
+}
+
+/* Category Ads */
+/* reference: https://bootsnipp.com/snippets/N6yNO */
+
+#ads {
+    margin: 30px 0 30px 0;
+}
+
+#ads .card:hover {
+    background: #fff;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#ads .card-image-overlay {
+    font-size: 20px;
+}
+
+#ads .card-image-overlay span {
+    display: inline-block;
+}
+
+#ads .ad-btn {
+    text-transform: uppercase;
+    width: 150px;
+    height: 40px;
+    border-radius: 80px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    border: 3px solid #e6de08;
+    display: block;
+    text-decoration: none;
+    margin: 20px auto 1px auto;
+    color: #000;
+    overflow: hidden;
+    position: relative;
+    background-color: #e6de08;
+}
+
+#ads .ad-btn:hover {
+    background-color: #e6de08;
+    color: #1e1717;
+    border: 2px solid #e6de08;
+    background: transparent;
+    transition: all 0.3s ease;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+}
+
+#ads .ad-title h5 {
+    text-transform: uppercase;
+    font-size: 18px;
+}

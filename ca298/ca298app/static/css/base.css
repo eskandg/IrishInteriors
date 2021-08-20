@@ -1,0 +1,10 @@
+html {
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
+}
+
+body {
+    padding-top: 77px;
+    background: #f1f3f5!important;
+}
+

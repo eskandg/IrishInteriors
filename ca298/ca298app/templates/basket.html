@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+
+{% block custom_css%}
+    <link rel="stylesheet" href="../static/css/basket.css">
+{% endblock %}
+
+{% block title %}
+    Shopping Basket
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3" style="padding-bottom: 30px;">
+
+    <div class="card align-center">
+
+        <div class="card-header">
+            Shopping Basket
+        </div>
+
+        {% if size > 0 %} <!-- basket with items -->
+        <div class="row">
+                <div class="col-md-6">
+
+                    <!-- basket items -->
+                    <ul class="list-group list-group-flush">
+
+                        {% for product in products %}
+
+                            <div class="card rounded-0 border-top-0 border-left-0">
+                                <li class="list-group-item">
+                                    <!-- product image -->
+                                    <div class="col-sm-8 col-md-8 col-lg-8 basket_img_div w-100">
+                                        <a class="w-100" href="/product/{{ product.0.id }}">
+                                            <img class="img-fluid img-thumbnail w-100" src="{{ product.0.picture.url }}"></img>
+                                        </a>
+                                    </div>
+
+
+                                    <div style="line-height: 10px;" class="col">
+                                        <!-- product name -->
+                                        <div class="row">
+                                            <a class="h1 lead font-weight-normal text-info" href="/product/{{ product.0.id }}">
+                                                {{ product.0.name }}
+                                            </a>
+                                        </div>
+                                        <!-- product category -->
+                                        <div class="row">
+                                            <p class="small text-muted font-weight-light text-capitalize">{{ product.0.category.name }}</p>
+                                        </div>
+                                        <!-- product price -->
+                                        <div class="row">
+                                            <div class="card price">€{{ product.0.price }}</div>
+                                        </div>
+                                        <!-- product quantity -->
+                                        <div class="row">
+                                            <p class="small">Quantity</p>
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- quantity buttons -->
+                                            <div class="btn-group" role="group">
+                                                <a href="/addfrombasket/{{ product.0.id }}" class="btn btn-success" role="button">+<a/>
+                                                <a href="/removebasket/{{ product.0.id }}" class="btn btn-light" role="button">-</a>
+                                                <button class="text-white btn btn-warning">{{ product.1 }}</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+                            </div>
+
+                    {% endfor %}
+                    </ul>
+                </div>
+                <!-- general basket info -->
+                <div style="margin-top: 50px; margin-bottom: 16px;" class="col-md-6">
+                    <div class="col">
+                        <p style="font-size: 1.65rem;" class="h1 lead font-weight-bold text-muted">Your Basket has {{ size }} items</p>
+                        <p class="font-weight-bold lead">Subtotal: €{{ total_price }}</p>
+                        <a href="/orderform/" class="btn btn-success" role="button">Proceed To Checkout</a>
+
+                    </div>
+                </div>
+
+        </div>
+
+        {% else %} <!-- empty basket -->
+            <h1 class="card-body text-muted text-center">
+            Your basket is empty. </br>
+            <a href="/products/" class="card-body small text-center text-info">See our products</a>
+            </h1>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}
+

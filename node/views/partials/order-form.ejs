@@ -1,0 +1,49 @@
+<!-- payment form -->
+<div id="payment-form" class="col-lg-6 col-md-12">
+    <div class="card">
+        <div class="h3 card-header text-center">Enter Your Payment Details </div>
+        <div class="card-body">
+            <div class="mx-auto">
+
+                <div id="order-alert" class="alert alert-block alert-danger initial-display"> 
+                    <ul class="m-0"> 
+                        <li>Please enter all of the fields below.</li> 
+                    </ul> 
+                </div>
+
+                <form action="/orderform/" method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="V0qxF9x1ZWWLfubdXdGZBsg9a7eENrSGZqrQCHNKlCWDVxIdjLGuxLzggwTcbNwG">
+                    
+                    <div id="div_id_cardholder_name" class="form-group"> 
+                        <label for="id_cardholder_name" class=" requiredField">Cardholder name<span class="asteriskField">*</span></label> 
+                        <div class=""> 
+                            <input type="text" name="cardholder_name" maxlength="100" placeholder="Enter name on card here..." class="textinput textInput form-control" required id="id_cardholder_name">
+                        </div> 
+                    </div> 
+                    
+                    <div id="div_id_card_number" class="form-group">
+                            <label for="id_card_number" class=" requiredField">Card number<span class="asteriskField">*</span></label>
+                            <div class="">
+                                <input type="number" name="card_number" min="0" max="9999999999999999999" placeholder="Enter your card number here..." step="1" class="numberinput form-control" required id="id_card_number">
+                        </div>
+                    </div> 
+                    
+                    <div id="div_id_cvv_number" class="form-group">
+                            <label for="id_cvv_number" class=" requiredField">Cvv number<span class="asteriskField">*</span></label>
+                            <div class="">
+                                <input type="number" name="cvv_number" min="0" max="999" placeholder="Enter 3 digit cvv number..." step="1" class="numberinput form-control" required id="id_cvv_number">
+                            </div>
+                    </div> 
+                    
+                    <div id="div_id_shipping_address" class="form-group"> 
+                        <label for="id_shipping_address" class=" requiredField">Shipping address<span class="asteriskField">*</span></label>
+                            <div class="">
+                                <input type="text" name="shipping_address" maxlength="500" placeholder="Enter your address here..." class="textinput textInput form-control" required id="id_shipping_address">
+                            </div> 
+                    </div>
+
+                    <button id="checkout-button" class="btn btn-lg btn-primary btn-block" type="submit">Complete Order</button>
+                </form>
+            </div>
+        </div>
+</div>

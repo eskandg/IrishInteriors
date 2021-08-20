@@ -1,0 +1,43 @@
+  <!-- categories -->
+  <div id="index" class="content index-content">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+          <div class="col">
+
+              <h1 class="display-4 letter-spacing"><b>Welcome to IrishInteriors!</b></h1>
+              <p class="lead"><b>The #1 fastest growing Irish retailer for all your home furniture needs.</b></p>
+              <hr class="my-4"/>
+              <p class="lead letter-spacing"><b>Shop from our range of products below</b></p>
+              <p class="lead">
+                  <a id="contentID-products" class="contentID btn btn-primary btn-lg letter-spacing" href="#allproducts" role="button" onclick="changeContent(this)">Browse Products</a>
+              </p>
+          </div>
+      </div>
+    </div>
+    
+    <div class="container">
+        <h1 class="lead display-4 text-center letter-spacing">Categories</h1>
+        <hr/>
+        <div id="ads" class="row">
+            <!-- Category Card -->
+            <% categories.forEach(function(category) { %>
+            <div class="col-md-4 mt-2">
+              <a id="contentID-products-<%= category.fields.name %>" class="contentID text-dark h-100" onclick="changeContent(this)" href="#<%= category.fields.name %>-products">
+                    <div class="card rounded h-100">
+                    
+                        <img class="card-img-top img-fluid h-100" src="http://127.0.0.1:8000/media/<%= category.fields.picture %>" alt="<%= category.fields.name %> image"/>
+                        <div class="card-body text-center">
+                            <div class="ad-title letter-spacing m-auto">
+                                <h5><%= category.fields.name.toUpperCase() %></h5>
+                            </div>
+                        </div>
+                    </div>
+              </a>
+            </div>
+          <% }); %>
+
+        </div>
+        <hr class="my-4"/>
+        <br>
+    </div>
+</div>

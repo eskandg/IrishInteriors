@@ -1,0 +1,20 @@
+<!-- sidebar based on: https://bootsnipp.com/snippets/45ngx -->
+<div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 position-sticky sticky-top sidebar1">
+    <ul class="left-navigation fixed-top mt-3 mb-5 list">
+        <h5 class="sidebar-heading"><strong>CATEGORIES <span class="fa fa-filter"></span></strong></h5>
+
+        <li>
+            <a id="contentID-products" class="contentID" href="#allproducts" onclick="changeContent(this)">
+                <h6 class="text-white"> All Products </h6>
+            </a>
+        </li>
+
+        <% categories.forEach(function(category) { %>
+            <li> 
+                <a id="contentID-products-<%= category.fields.name %>" class="contentID" onclick="changeContent(this)" href="#<%= category.fields.name %>-products">
+                    <h6 class="text-white"><%= category.fields.name.charAt(0).toUpperCase() %><%= category.fields.name.slice(1) %></h6>
+                </a>
+            </li>
+        <% }); %> 
+    </ul>
+</div> 

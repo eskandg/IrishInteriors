@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Admin Login
+{% endblock %}
+
+<style>
+
+    @media screen and (max-width: 400px) {
+        div.container {
+            height: fit-content!important;
+        }
+    }
+</style>
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div style="height: 100%;" class="container card d-flex flex-column justify-content-center my-5 p-5 align-items-center">
+        <h1 style="font-size: 5vh;" class="lead text-center mb-5">Admin Registration</h1>
+
+        <div class="form-group">
+            <form action="." method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            </form>
+            <a href="/login">
+            <button class="d-flex mx-auto mt-3 py-2 justify-content-center btn btn-light">Already have an account?</button>
+            <a/>
+        </div>
+    </div>
+
+{% endblock %}
+

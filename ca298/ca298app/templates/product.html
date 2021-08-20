@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+
+{% block custom_css %}
+    <link rel="stylesheet" href="../static/css/product.css">
+{% endblock %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+        {% if added == True %}
+                <div id="notification" style="text-align: center" class="alert alert-success"><span class="fa fa-check-circle"></span> Product added to basket</div>
+        {% endif %}
+        <!-- product details  -->
+        <div class="container-fluid mt-3 mb-5">
+            <div class="card">
+
+                <!-- back to shop button -->
+                <div class="card-header">
+                    <a class="btn btn-secondary text-white" href="/" role="button">Back to Shop</a>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <!-- product image -->
+                        <div class="col-sm-9 col-md-9 col-lg-5 col-xl-4 mx-auto mb-2">
+                            <img id="product_img" style="min-inline-size: -webkit-fill-available; width: -webkit-fill-available;" class="mx-auto align-self-start mr-3 img-responsive img-fluid img-thumbnail" src="{{ product.picture.url }}"/>
+                        </div>
+
+                        <div class="col-sm-9 col-md-9 col-lg-7 mx-auto">
+                            <div class="card w-100">
+                                <!-- product name and category -->
+                                <div style="font-size: 2rem;" class="card-header letter-spacing lead font-weight-normal border-right border-secondary">
+                                    <p class="mb-0 font-weight-normal">{{ product.name }}</p>
+                                    <p class="mb-0 small lead font-weight-light text-muted text-capitalize">{{ product.category.name }}</p>
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- product price, dimensions, weight and description -->
+                                    <h1 style="width: fit-content; width: -moz-fit-content;" class="card p-1 letter-spacing lead text-secondary">
+                                        €{{ product.price }}
+                                    </h1>
+                                    <p class="h1 letter-spacing lead">Dimensions <p>{{ product.dimensions }} cm</p> </p>
+                                    <p class="h1 letter-spacing lead">Weight <p>{{ product.weight }} kg</p> </p>
+                                    <div class="card">
+                                        <div class="card-header lead font-weight-normal mr-auto border-right border-secondary">
+                                            Description
+                                        </div>
+                                        <div class="card-body">
+                                            {{ product.description }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- add to basket button -->
+                                <div class="card-footer d-flex">
+
+                                    <a class="btn btn-lg btn-success mx-auto" href="/addbasket/{{ product.id }}" role="button">
+                                        Add to Basket!
+                                    <a/>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <hr/>
+
+            <!-- products of related category -->
+            {% if first_category_product != None or category_products_size != 0 %}
+            <div class="card ">
+
+              <div class="card-body">
+
+                <p class="card-header letter-spacing">Products of related category</p>
+                <div style="width: fit-content; width: -moz-fit-content;" class="container my-5">
+                    <div id="controls" class="card carousel slide bg-light h-100" data-ride="carousel">
+                         <div class="card-body"> <!-- card with carousel -->
+                             <div class="carousel-inner">
+                                 <div class="carousel-item active">
+                                         <div class="card mx-auto w-100 h-100 img-fluid">
+                                             <!-- first product image -->
+                                             <a class="mx-auto w-100 h-100" href="/product/{{ first_category_product.id }}">
+                                                 <img class="mx-auto card-img-top p-3 h-100" src="{{ first_category_product.picture.url }}"/>
+                                             </a>
+                                             <hr/>
+
+                                             <!-- first product name and price -->
+                                             <div class="card-body">
+                                                 <a class="h1 lead font-weight-normal text-info text-capitalize" href="/product/{{ first_category_product.id }}">
+                                                     {{ first_category_product.name }}
+                                                 </a>
+                                                 <h1 style="width: fit-content; width: -moz-fit-content;" class="card mt-1 p-1 letter-spacing lead">
+                                                     €{{ first_category_product.price }}
+                                                 </h1>
+                                             </div>
+                                         </div>
+                                 </div>
+
+                                 <!-- the rest of the products -->
+                                 {% if category_products_size >= 1 %}
+                                     {% for item in category_products %}
+                                         <div class="carousel-item">
+
+                                                 <div class="card mx-auto w-100 h-100 img-fluid">
+                                                     <a class="mx-auto w-100 h-100" href="/product/{{ item.id }}">
+                                                         <img class="card-img-top p-3 h-100" src="{{ item.picture.url }}"/>
+                                                     </a>
+                                                     <hr/>
+                                                     <div class="card-body">
+                                                         <a class="h1 lead font-weight-normal text-info" href="/product/{{ item.id }}">
+                                                             {{ item.name }}
+                                                         </a>
+                                                         <h1 style="width: fit-content; width: -moz-fit-content;" class="card mt-1 p-1 letter-spacing lead">
+                                                             €{{ item.price }}
+                                                         </h1>
+                                                     </div>
+
+                                             </div>
+                                         </div>
+                                     {% endfor %}
+                                 {% endif %}
+                             </div>
+
+                             <!-- left button (previous) -->
+                             <a class="carousel-control-prev" href="#controls" role="button" data-slide="prev">
+                                 <span class="carousel-arrow mr-5"><</span>
+                                 <span class="sr-only">Previous Button</span>
+                             </a>
+
+                             <!-- right button (next) -->
+                             <a class="carousel-control-next" href="#controls" role="button" data-slide="next">
+                                 <span class="carousel-arrow ml-5">></span>
+                                 <span class="sr-only">Next Button</span>
+                             </a>
+                         </div>
+
+                    </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+        </div>
+
+        {% block JS %}
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready( function() {
+                            $("#notification").hide();
+                            $("#notification").fadeIn("fast");
+                            setTimeout(function () {
+                                // fade out notification after adding to basket from a product page
+                                $("#notification").fadeOut("slow");
+                            }, 10000);
+                        });
+                </script>
+        {% endblock %}
+
+{% endblock %}
+

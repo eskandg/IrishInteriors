@@ -1,0 +1,48 @@
+<div id="order-complete" class="content initial-display">
+
+    <!-- order alert -->
+    <div style="text-align: center" class="alert alert-success"><span class="fa fa-check-circle"></span> Your order has been placed successfully!</div> 
+
+    <!-- order details -->
+    <div class="px-4 py-5">
+
+        <!-- Order Details filled in by js in index.ejs-->
+        <h5 id="order-id" class="text-uppercase"></h5>
+        <h5 id="order-cardholder-name" class="text-uppercase"></h5>
+        <h5 id="order-shipping-address" class="text-uppercase"></h5>
+        <h5 id="date-ordered" class="text-uppercase"></h5>
+
+        <h4 class="mt-5 theme-color mb-5">You're order will arrive in 4-7 working days</h4> <span class="theme-color">Order Details</span>
+        <div class="mb-3">
+            <hr class="new1">
+        </div>
+
+        
+        <div id="order-items">
+            <!-- filled with order items by js -->
+        </div>
+
+
+        <div style="padding-right: 50px" class="d-flex justify-content-between">
+            <small>Shipping</small>
+            <small>€8.00</small>
+        </div>
+
+        <hr class="new1">
+
+        <div class="d-flex justify-content-between mt-3">
+            <span class="font-weight-bold">Total</span>
+            <span id="total_order_price" style="padding-right: 50px" class="font-weight-bold theme-color"></span>
+        </div>
+
+        <hr class="new1">
+
+        <div class="text-center mt-5">
+            <a id="contentID-index" class="contentID" href="#" onclick="changeContent(this)">
+                <button class="btn btn-primary">Back to Shop</button>
+            </a>
+        </div>
+
+    </div>
+
+</div>

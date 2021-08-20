@@ -1,0 +1,36 @@
+<div id="login" class="content initial-display">
+    <div style="height: 100vh;" class="card container d-flex flex-column justify-content-center p-5">
+            <h1 class="display-4 lead text-center mb-5">Login</h1>
+            <form id="login-form" action="." method="POST"> 
+                
+                <input type="hidden" name="csrfmiddlewaretoken" value="D7SUa73TpqleouDzI6dyNz7J2wP5RRAXIgKMhe7gBw3Vh02moHFIip8on2yMWWIH">
+
+                <div id="login-alert" class="alert alert-block alert-danger" style="display: none;"> 
+                    <ul class="m-0"> 
+                        <li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li> 
+                    </ul> 
+                </div>
+
+                <div id="div_id_username" class="form-group"> 
+                    <label for="id_username" class=" requiredField">Username<span class="asteriskField">*</span></label> 
+                    <div class=""> 
+                        <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" class="textinput textInput form-control" required id="id_username"> 
+                    </div> 
+                </div> 
+
+                <div id="div_id_password" class="form-group"> 
+                    <label for="id_password" class=" requiredField">Password<span class="asteriskField">*</span></label> 
+                    <div class=""> 
+                        <input type="password" name="password" class="form-control textinput textInput form-control" placeholder="Enter password..." required id="id_password"> 
+                    </div> 
+                </div>
+
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
+                
+            </form>
+            <a id="contentID-signup" class="contentID" href="#register" onclick="changeContent(this)">
+                <button class="d-flex mx-auto mt-3 py-2 justify-content-center btn btn-light">Don't have an account?</button>
+            <a/> 
+    </div>
+</div> 
+

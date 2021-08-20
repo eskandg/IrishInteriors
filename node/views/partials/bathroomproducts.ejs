@@ -1,0 +1,58 @@
+<div id="products-bathroom" class="content height-fix initial-display">
+    <div class="row">
+        <%- include('products-sidebar'); %>
+
+        <div style="z-index: 1020!important;" class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-xs-6 p-0">
+
+            <div class="card">
+
+                <div class="lead font-weight-normal card-header">
+                Bathroom Products
+                </div>
+
+                <div style="text-align: center; margin-bottom: 0!important;" class="product_added_notification content alert alert-success"><span class="fa fa-check-circle"></span> Product added to basket</div>
+
+                <div class="card body p-5">
+                    <div class="row">
+                    <% bathroomProducts.forEach(function(bathroomProduct) { %>
+                        <div class="col-xs-4 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-2">
+                            <div class="card h-100">
+                                <!-- product image -->
+                                <img class="card-img-top img-thumbnail img-responsive img-fluid h-100" src="http://127.0.0.1:8000/media/<%= bathroomProduct.fields.picture %>"/>
+
+                                <div class="card-body pr-1">
+                                   
+                                    <!-- product name -->
+                                    <p class="h1 lead font-weight-normal text-info">
+                                     <%= bathroomProduct.fields.name %>
+                                    </p>
+                                
+                                    <!-- product category and price -->
+                                    <p class="mb-0 small lead font-weight-normal text-muted">
+                                    <% categories.forEach(function(category) { %>
+                                        <% if(category.pk == bathroomProduct.fields.category){ %> 
+                                        <%= category.fields.name.charAt(0).toUpperCase() %><%= category.fields.name.slice(1) %>
+                                        <% } %>  
+                                    <% }); %> 
+                                    </p>
+                                
+                                    <h1 style="width: fit-content; width: -moz-fit-content;" class="card mt-1 p-1 letter-spacing lead">
+                                        €<%= bathroomProduct.fields.price %>
+                                    </h1>
+                                
+                                    <!-- product dimensions and weight -->
+                                    <p class="h6 small lead text-muted">Dimensions: <br><%= bathroomProduct.fields.dimensions %> cm</p>
+                                    <p class="float-left h6 small lead text-muted">Weight: <br><%= bathroomProduct.fields.weight %> kg</p>
+                                
+                                    <button class="float-right btn btn-success" onclick="addtoBasket(<%= bathroomProduct.pk %>)">Add to basket</button>
+                                </div>
+                            </div> 
+                        </div>
+                    <% }); %>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

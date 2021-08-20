@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Order Complete
+{% endblock %}
+
+
+{% block content %}
+    <div style="text-align: center" class="alert alert-success"><span class="fa fa-check-circle"></span> Your order has been placed successfully!</div> <!-- order alert -->
+
+    <!-- order details -->
+    <div class="px-4 py-5">
+
+        <h5 class="text-uppercase">Order No. {{ order.id }}</h5>
+        <h5 class="text-uppercase">Recipient Name: {{ order.cardholder_name }}</h5>
+        <h5 class="text-uppercase">Shipping Address: {{ order.shipping_address }}</h5>
+        <h5 class="text-uppercase">Date Ordered: {{ order.date_created }}</h5>
+
+        <h4 class="mt-5 theme-color mb-5">You're order will arrive in 4-7 working days</h4> <span class="theme-color">Order Details</span>
+        <div class="mb-3">
+            <hr class="new1">
+        </div>
+        {% for i in order_items %}
+            <div class="d-flex justify-content-between">
+                <span class="font-weight-bold">{{ i.product.name }}  (Qty:{{i.quantity}})</span>
+                <span style="padding-right: 50px" class="text-muted">€{{i.product.price}}</span>
+            </div>
+        {% endfor %}
+
+
+        <div style="padding-right: 50px" class="d-flex justify-content-between">
+            <small>Shipping</small>
+            <small>€8.00</small>
+        </div>
+
+        <hr class="new1">
+
+        <div class="d-flex justify-content-between mt-3">
+            <span class="font-weight-bold">Total</span>
+            <span style="padding-right: 50px" class="font-weight-bold theme-color">€{{ total_price }}</span>
+        </div>
+
+        <hr class="new1">
+
+        <div class="text-center mt-5">
+            <a href="/">
+                <button class="btn btn-primary">Back to Shop</button>
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}

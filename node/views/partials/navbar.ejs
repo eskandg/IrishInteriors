@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light bg-white border-bottom border-muted navbar-expand-lg fixed-top initial-display" role="navigation">
+
+    <a id="contentID-index" class="contentID navbar-brand" href="#" onclick="changeContent(this)">
+        <img src="http://127.0.0.1:8000/static/img/logo.png" width="175" height="50"/>
+    </a> 
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav_collapse">
+
+        <div class="nav navbar-nav">
+            <a id="contentID-index" class="contentID nav-item nav-link" href="#" onclick="changeContent(this)"><span class="fa fa-home fa-lg"></span> Home</a>
+            <a id="contentID-products" class="contentID nav-item nav-link" href="#allproducts" onclick="changeContent(this)"><span style="margin-top: 5px;" class="fa fa-list"></span> Products</a>
+            <a id="contentID-basket" class="contentID nav-item nav-link" href="#basket" onclick="changeContent(this)"><span class="fa fa-shopping-basket"></span> Basket</a>
+        </div>
+        <div id="test" class="nav navbar-nav ml-auto"> 
+            <div id="signed-in" class="signed">
+                <a id="profile" class="nav-item nav-link" href="#login" onclick="changeProfile()">Signed in as: </a>
+                <a class="nav-item nav-link" href="#logout" onclick="logout()"><span class="fa fa-sign-out fa-lg"></span>Logout</a>
+            </div> 
+
+            <div id="signed-out" class="signed"> 
+                <a id="contentID-signup" class="contentID nav-item nav-link" href="#register" onclick="changeContent(this)"><span class="fa fa-user-plus" fa-2x></span> Sign Up</a>
+                <a id="contentID-login" class="contentID nav-item nav-link" href="#login-form" onclick="changeContent(this)"><span class="fa fa-sign-in fa-lg"></span>Login</a>
+            </div>
+        
+        </div> 
+
+    </div>
+
+</nav>

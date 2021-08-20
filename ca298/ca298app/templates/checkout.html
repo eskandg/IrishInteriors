@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block custom_css%}
+    <link rel="stylesheet" href="../static/css/basket.css">
+{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mx-auto">
+
+                <div class="card align-center">
+
+                    <div class="card-header">
+                        <b>Order Summary</b>
+                    </div>
+                    {% if total_price != 0 %}
+
+                            <div style="padding: .75rem 1.25rem; line-height: 10px;" class="row">
+
+                                {% for product in basket_items %}
+                                        <!-- product name -->
+                                        <div class="col-xl-3 col-md-4 mb-auto">
+                                            <a class="lead font-weight-normal text-md-center text-lg-center text-xl-center text-nowrap text-info" href="/product/{{ product.product_id.id }}">
+                                                {{ product.product_id.name }}
+                                            </a>
+                                        </div>
+                                        <!-- product category -->
+                                        <div class="col-xl-3 col-md-2 mb-auto">
+                                            <p class="mt-0 small text-nowrap text-md-center text-lg-center text-xl-center text-muted font-weight-light">{{ product.product_id.category.name|capfirst }}</p>
+                                        </div>
+                                        <!-- product quantity -->
+                                        <div class="col-xl-3 col-md-2 mb-auto">
+                                            <p class="mt-0 text-nowrap text-md-center text-lg-center text-xl-center small lead">Qty. {{ product.quantity }}</p>
+                                        </div>
+                                        <!-- product price -->
+                                        <div class="col-xl-3 col-md-4 mb-auto">
+                                            <div class="text-nowrap text-md-center text-lg-center text-xl-center">€{{ product.product_id.price }}</div>
+                                        </div>
+
+                                  <!-- no bottom line at the final item -->
+                                  {% if not forloop.last %}
+                                    <hr style="height: 5px; width: 100%;"/>
+                                  {% endif %}
+
+                                  {% endfor %}
+                            </div>
+
+                            <!-- fees -->
+                            <li class="list-group-item bg-light">
+                                <p class="font-weight-normal text-muted">Subtotal</p>
+                                <p class="ml-auto font-weight-normal text-muted">€{{ subtotal }}</p>
+                            </li>
+
+                            <li class="list-group-item bg-light">
+                                <p class="font-weight-normal text-muted">Shipping Fee</p>
+                                <p class="ml-auto font-weight-normal text-muted">€8.00</p>
+                            </li>
+
+                            <li class="list-group-item bg-light">
+                                <p class="lead font-weight-normal text-muted">Total (Incl. VAT)</p>
+                                <p class="ml-auto lead font-weight-normal text-muted">€{{ total_price }}</p>
+                            </li>
+                        </ul>
+                </div>
+                {% else %} <!-- if the basket is empty prevent the user from ordering -->
+                    <h1 class="card-body text-muted text-center">
+                    Your basket is empty. </br>
+                    <a href="/products/" class="card-body small text-center text-info">See our products</a>
+                    </h1>
+                {% endif %}
+        </div>
+        {% if total_price != 0 %} <!-- payment form -->
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="h3 card-header text-center"> Enter Your Payment Details </div>
+                    <div class="card-body">
+                        <div class="mx-auto">
+                            <form action="/orderform/" method="post">
+                                {% csrf_token %}
+                                {{ order|crispy }}
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Complete Order</button>
+                            </form>
+                        </div>
+                 </div>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

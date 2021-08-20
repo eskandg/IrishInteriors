@@ -1,0 +1,52 @@
+<br>
+<div id="basket" class="content container-fluid initial-display">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mx-auto">
+
+                <div class="card align-center">
+                    
+                    <!-- empty basket managed by js -->
+                    <div id="empty-basket" class="initial-display">
+                        <div class="card-header">Shopping Basket</div>
+                        <h1 class="card-body text-muted text-center">
+                        Your basket is empty. </br>
+                        <a id="contentID-products" href="#allproducts" class="card-body small text-center text-info" onclick="changeContent(this)">See our products</a>
+                        </h1>
+                    </div>
+                    
+                    <!-- basket and order summary -->
+                    <div id="order-summary">
+
+                        <div class="card-header">
+                            <b>Order Summary</b>
+                        </div>
+            
+                        <div id="basket-items" style="padding: .75rem 1.25rem; line-height: 10px;" class="row">
+                            <!-- to be filled with products via js -->
+                        </div>
+
+                        <!-- fees (default values changed by js) -->
+                        <li class="d-flex list-group-item bg-light">
+                            <p class="font-weight-normal text-muted">Subtotal</p>
+                            <p id="subtotal" class="ml-auto font-weight-normal text-muted">€0.00</p>
+                        </li>
+
+                        <li class="d-flex list-group-item bg-light">
+                            <p class="font-weight-normal text-muted">Shipping Fee</p>
+                            <p class="ml-auto font-weight-normal text-muted">€8.00</p>
+                        </li>
+
+                        <li class="d-flex list-group-item bg-light">
+                            <p class="lead font-weight-normal text-muted">Total (Incl. VAT)</p>
+                            <p id="total-price" class="ml-auto lead font-weight-normal text-muted">€8.00</p>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+        </div>
+
+        <%- include("order-form"); %>
+
+    </div>
+</div>
+</div>

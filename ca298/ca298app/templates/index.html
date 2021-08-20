@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    IrishInteriors Homepage
+{% endblock %}
+
+
+{% block custom_css %}
+    <link rel="stylesheet" href="../static/css/index.css">
+{% endblock %}
+
+{% block content %}
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid">
+            <div class="col">
+
+                <h1 class="display-4 letter-spacing"><b>Welcome to IrishInteriors!</b></h1>
+                <p class="lead"><b>The #1 fastest growing Irish retailer for all your home furniture needs.</b></p>
+                <hr class="my-4"/>
+                <p class="lead letter-spacing"><b>Shop from our range of products below</b></p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg letter-spacing" href="/products/" role="button">Browse Products</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- categories -->
+    <div class="index-content">
+    <div class="container">
+        <h1 class="lead display-4 text-center letter-spacing">Categories</h1>
+        <hr/>
+        <div class="row" id="ads">
+            <!-- Category Card -->
+            {% for category in categories %}
+                 <div class="col-md-4 mt-2">
+                    <a class="text-dark h-100" href="/products/{{ category.name }}">
+                         <div class="card rounded h-100">
+
+                             <img class="card-img-top img-fluid h-100" src="{{ category.picture.url }}" alt="{{ category.name | capfirst }} image"/>
+                             <div class="card-body text-center">
+                                 <div class="ad-title letter-spacing m-auto">
+                                     <h5>{{category.name|capfirst}}</h5>
+                                 </div>
+                             </div>
+                         </div>
+                    </a>
+                 </div>
+            {% endfor %}
+
+
+        </div>
+        <hr class="my-4"/>
+        <br>
+    </div>
+    </div>
+
+{% endblock %}

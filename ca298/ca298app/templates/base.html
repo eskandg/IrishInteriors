@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="icon" href="../static/img/icon.png">
+
+ <!-- bootstrap CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
+
+ <!-- Font Awesome CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ <!-- custom CSS -->
+ <link rel="stylesheet" href="../static/css/base.css">
+ {% block custom_css %}
+ {% endblock %}
+
+ <title>{% block title %}{% endblock %}</title>
+
+</head>
+
+<body>
+
+ <nav class="navbar navbar-light bg-white border-bottom border-muted navbar-expand-lg fixed-top" role="navigation">
+
+     <a class="navbar-brand" href="{% url "index" %}">
+         <img src="../static/img/logo.png" width="175" height="50"/>
+     </a>
+
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_collapse">
+         <span class="navbar-toggler-icon"></span>
+     </button>
+
+     <div class="collapse navbar-collapse" id="nav_collapse">
+
+         <div class="nav navbar-nav">
+             <a class="nav-item nav-link" href="{% url "index" %}"><span class="fa fa-home fa-lg"></span> Home</a>
+             <a class="nav-item nav-link" href="{% url "products" %}"><span style="margin-top: 5px;" class="fa fa-list"></span> Products</a>
+             <a class="nav-item nav-link" href="{% url "basket" %}"><span class="fa fa-shopping-basket"></span> Basket</a>
+         </div>
+
+         <div class="nav navbar-nav ml-auto">
+             {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="/">Signed in as: {{ user.username }}</a>
+                <a class="nav-item nav-link" href="/logout"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
+             {% else %}
+                <a class="nav-item nav-link" href="{% url "user_register" %}"><span class="fa fa-user-plus" fa-2x></span> Sign Up</a>
+                <a class="nav-item nav-link" href="/login"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+             {% endif %}
+         </div>
+
+     </div>
+
+ </nav>
+
+ {% block content %}
+ {% endblock %}
+
+
+ <!--bootstrap JavaScript-->
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+ <!-- Custom JS -->
+ {% block JS %}
+ {% endblock %}
+
+</body>
+
+</html>
+

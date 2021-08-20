@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Products
+{% endblock %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="../static/css/products.css">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- sidebar based on: https://bootsnipp.com/snippets/45ngx -->
+        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 position-sticky sticky-top sidebar1">
+                <ul class="left-navigation fixed-top mt-3 mb-5 list">
+                    <h5><strong>CATEGORIES <span class="fa fa-filter"></span></strong></h5>
+
+                    <li>
+                        <a href="/products">
+                            <h6 class="text-white"> All Products </h6>
+                        </a>
+                    </li>
+
+                    {% for category in categories %}
+                        <li>
+                            <a href="{{ category.name }}">
+                                <h6 class="text-white">{{ category.name|capfirst }}</h6>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+        </div>
+
+
+           <div style="z-index: 1020!important;" class="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-xs-6 p-0">
+               {%  if failed_category == True %}
+                    <div id="notification" style="text-align: center" class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Category entered does not exist. Showing all products</div>
+                {% endif %}
+                <div class="card">
+
+                {%  if failed_product == True %}
+                    <div id="notification" style="text-align: center" class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Product entered does not exist. Showing all products</div>
+                {% endif %}
+
+                <div class="card">
+
+                    <div class="lead font-weight-normal card-header">
+                        {{ sitename|capfirst }} Products
+                    </div>
+                    <div class="card body p-5">
+                        <div class="row">
+                        {% for product in products %}
+                            <div class="col-xs-4 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                <div class="card h-100">
+                                    <!-- product image -->
+                                    <a class="h-100" href="/product/{{ product.id }}">
+                                        <img class="card-img-top img-thumbnail img-responsive img-fluid h-100" src="{{ product.picture.url }}"/>
+                                    </a>
+                                    <div class="card-body">
+                                        <!-- product name -->
+                                         <a class="h1 lead font-weight-normal text-info" href="/product/{{ product.id }}">
+                                             {{ product.name }}
+                                         </a>
+                                         <!-- product category and price -->
+                                         <p class="mb-0 small lead font-weight-normal text-muted">{{ product.category.name | capfirst }}</p>
+                                         <h1 style="width: fit-content; width: -moz-fit-content;" class="card mt-1 p-1 letter-spacing lead">
+                                             €{{ product.price }}
+                                         </h1>
+                                         <!-- product dimensions and weight -->
+                                         <p class="h6 small lead text-muted">Dimensions: <br>{{ product.dimensions }} cm</p>
+                                         <p class="h6 small lead text-muted">Weight: <br>{{ product.weight }} kg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+           </div>
+    </div>
+
+
+{% endblock %}
+

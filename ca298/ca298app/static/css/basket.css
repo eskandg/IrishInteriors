@@ -1,0 +1,16 @@
+.basket_img_div {
+    margin-left: -15px;
+    margin-right: 15px;
+    padding: 15px;
+}
+
+.price {
+    padding: 5px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.list-group-item {
+    display: flex;
+    flex: 1 1 auto;
+}
