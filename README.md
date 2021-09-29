@@ -16,7 +16,7 @@ I learned how to deal with APIs and got introduced to making full-stack applicat
 
 ## Setup
 
-###Installation
+### Installation
 
 Firstly, install the requirements from [requirements.txt](ca298/requirements.txt).
 
